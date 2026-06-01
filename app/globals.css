@@ -10,6 +10,8 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-fraunces : var(--font-fraunces);
+  --font-inter : var(--font-inter)
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +25,42 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.PhoneInput {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: white;
+}
+
+.PhoneInputInput {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 100%;
+    background: transparent;
+    color: #0B1F3A;
+}
+
+.PhoneInputInput::placeholder {
+    color: #D1D5DB;
+}
+
+.PhoneInputCountrySelect {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.PhoneInputCountryIcon {
+    width: 20px;
+    height: 20px;
 }
