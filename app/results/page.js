@@ -58,25 +58,25 @@ export default function ResultsPage() {
         : allTrips;   // all results
 
     // Show no result if filter selected but returns empty
-    const showNoResult = selectedFilter && trips.length === 0;
+    // const showNoResult = selectedFilter && trips.length === 0;
 
     return (
         <div className="min-h-screen flex flex-col bg-black/6">
             <Header />
 
-            <main className="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 py-10">
+            <main className="flex-1 max-w-5xl mx-auto w-full px-6  py-14 gap-x-8">
                 <p className="text-xs font-semibold text-[#F6C330] tracking-widest uppercase mb-2">
                     Your shortlist
                 </p>
                 <h1 className="font-fraunces font-normal text-4xl leading-tight mb-1">
                     Your 3 best trips
                 </h1>
-                <p className="text-sm text-gray-500 mb-8">
+                <p className="text-[16px] text-gray-500 mb-8">
                     Tailored to the preferences you shared.
                 </p>
 
                 {/* Filter chips */}
-                <div className="flex flex-wrap gap-1 mb-8 py-3 px-4 rounded-2xl border border-[#D5E0E2] bg-white">
+                <div className="flex flex-wrap gap-1 mb-8 p-5 rounded-2xl border border-[#D5E0E2] bg-white">
                     {/* Refine button */}
                     <div
                         className="flex items-center w-full lg:w-auto cursor-pointer"
@@ -150,7 +150,7 @@ export default function ResultsPage() {
                 {/* Cards or Empty State */}
                 {trips.length > 0 ? (
                     <>
-                        <div className="grid grid-cols-1  lg:grid-cols-3 gap-5 mb-8">
+                        <div className="grid grid-cols-1  lg:grid-cols-3 gap-6 mb-8">
                             {trips.map((trip) => (
                                 <TripCard key={trip.id} {...trip} />
                             ))}
@@ -158,14 +158,14 @@ export default function ResultsPage() {
 
 
                         <div className="border border-dashed border-black/10 rounded-2xl p-8 text-center">
-                            <h2 className="font-fraunces text-xl font-medium text-navy mb-4">
+                            <h2 className="font-fraunces text-xl font-medium text-[20px] mb-4">
                                 Is this what you were looking for?
                             </h2>
-                            <div className="flex justify-center gap-2.5 flex-wrap">
+                            <div className="flex justify-center gap-2 flex-wrap">
                                 {["Yes", "Almost", "Not Really"].map((label) => (
                                     <button
                                         key={label}
-                                        className="text-sm font-medium border border-black/10 rounded-full px-5 py-2 hover:bg-gray-50 transition-colors"
+                                        className="text-sm font-medium border border-black/10 rounded-full px-4 py-2 hover:bg-gray-50 transition-colors"
                                     >
                                         {label}
                                     </button>

@@ -51,8 +51,12 @@ export default function TripCard({
                 {/* Badge top-left */}
                 {badge && (
                     <span className={`absolute top-2.5 left-2.5 text-[11px]  text-white font-semibold px-2.5 py-1 rounded-full
-          ${featured ? "bg-amber-400 border border-white" : "bg-white/20 border border-white/60"}
-          `}>
+          ${featured ? " border-white" : "bg-white/20 border border-white/60"}
+          `}
+                        style={featured ? {
+                            background: "linear-gradient(134deg, rgba(253,199,37,0.50) 35.01%, rgba(139,109,18,0.50) 85.14%), #FDC725"
+                        } : {}}
+                    >
                         {badge}
                     </span>
                 )}
@@ -75,49 +79,58 @@ export default function TripCard({
             </div>
 
             {/* Body */}
-            <div className="p-5 flex flex-col gap-2.5 flex-1 md:mb-5 mb-0">
+            <div className="p-6 flex flex-col  flex-1 ">
                 {/* Destination + Price */}
-                <div className="flex justify-between items-start">
-                    <div>
-                        <h3 className="font-fraunces text-lg font-medium text-navy leading-tight">{city}</h3>
-                        <p className="text-xs text-gray-400 mt-0.5">{country}</p>
+                <div className="flex justify-between items-start ">
+                    <div className="flex flex-col gap-4.5">
+                        <h3 className="font-fraunces text-2xl font-medium text-navy leading-tight">{city}</h3>
+                        <p className="text-xs text-gray-400 ">{country}</p>
                     </div>
                     <div className="text-right">
-                        <div className="flex items-center gap-1.5 text-[10px] text-black/40 bg-yellow-100 rounded-full px-2 py-0.2">
+                        <div className="flex  items-center gap-2 text-[8px] text-black/40 bg-yellow-100 rounded-full px-2 py-0.2">
                             <span>Price generated</span>
                             <span className="font-semibold text-gray-600">0s ago</span>
                             <span>22:46</span>
                         </div>
-                        <p className="font-fraunces text-xl font-semibold text-navy">{price}</p>
-                        <p className="text-[11px] text-gray-400">per person</p>
+                        <p className="font-fraunces leading-9 text-xl font-normal tracking-tight text-[30px]">{price}</p>
+                        <p className="text-[11px] leading-4 text-gray-400">per person</p>
                     </div>
                 </div>
 
                 {/* Airline + Duration */}
-                <div className="flex items-center gap-1.5 text-xs text-gray-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                        <path d="M10.3833 11.2L9.33333 6.41667L11.375 4.375C12.25 3.5 12.5417 2.33333 12.25 1.75C11.6667 1.45833 10.5 1.75 9.625 2.625L7.58333 4.66667L2.8 3.61667C2.50833 3.55833 2.275 3.675 2.15833 3.90833L1.98333 4.2C1.86667 4.49167 1.925 4.78333 2.15833 4.95833L5.25 7L4.08333 8.75H2.33333L1.75 9.33333L3.5 10.5L4.66667 12.25L5.25 11.6667V9.91667L7 8.75L9.04167 11.8417C9.21667 12.075 9.50833 12.1333 9.8 12.0167L10.0917 11.9C10.325 11.725 10.4417 11.4917 10.3833 11.2Z" stroke="#F6C330" strokeWidth="1.16667" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    {airline}
-                    <span className="w-1 h-1 rounded-full bg-gray-300" />
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                        <g clip-path="url(#clip0_375_2481)">
-                            <path d="M6.99984 12.8333C10.2215 12.8333 12.8332 10.2216 12.8332 6.99996C12.8332 3.7783 10.2215 1.16663 6.99984 1.16663C3.77818 1.16663 1.1665 3.7783 1.1665 6.99996C1.1665 10.2216 3.77818 12.8333 6.99984 12.8333Z" stroke="#F6C330" strokeWidth="1.16667" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M7 3.5V7L9.33333 8.16667" stroke="#F6C330" strokeWidth="1.16667" strokeLinecap="round" strokeLinejoin="round" />
-                        </g>
-                        <defs>
-                            <clipPath id="clip0_375_2481">
-                                <rect width="14" height="14" fill="white" />
-                            </clipPath>
-                        </defs>
-                    </svg>
-                    {duration}
+                <div className="w-full flex items-center  py-5  gap-2 text-[14px] text-gray-500">
+                    <div className="w-1/2 flex justify-start gap-1.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                            <path d="M10.3833 11.2L9.33333 6.41667L11.375 4.375C12.25 3.5 12.5417 2.33333 12.25 1.75C11.6667 1.45833 10.5 1.75 9.625 2.625L7.58333 4.66667L2.8 3.61667C2.50833 3.55833 2.275 3.675 2.15833 3.90833L1.98333 4.2C1.86667 4.49167 1.925 4.78333 2.15833 4.95833L5.25 7L4.08333 8.75H2.33333L1.75 9.33333L3.5 10.5L4.66667 12.25L5.25 11.6667V9.91667L7 8.75L9.04167 11.8417C9.21667 12.075 9.50833 12.1333 9.8 12.0167L10.0917 11.9C10.325 11.725 10.4417 11.4917 10.3833 11.2Z" stroke="#F6C330" strokeWidth="1.16667" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        {airline}
+                    </div>
+
+                    <div className="w-1/2 flex gap-1.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                            <g clip-path="url(#clip0_375_2481)">
+                                <path d="M6.99984 12.8333C10.2215 12.8333 12.8332 10.2216 12.8332 6.99996C12.8332 3.7783 10.2215 1.16663 6.99984 1.16663C3.77818 1.16663 1.1665 3.7783 1.1665 6.99996C1.1665 10.2216 3.77818 12.8333 6.99984 12.8333Z" stroke="#F6C330" strokeWidth="1.16667" strokeLinecap="round" strokeLinejoin="round" />
+                                <path d="M7 3.5V7L9.33333 8.16667" stroke="#F6C330" strokeWidth="1.16667" strokeLinecap="round" strokeLinejoin="round" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_375_2481">
+                                    <rect width="14" height="14" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                        {duration}
+                    </div>
                 </div>
 
                 {/* AI Explanation */}
-                <div className=" rounded-lg p-2.5 flex gap-2 items-start bg-black/6">
-                    <div className="w-7 h-7 shrink-0  rounded-full bg-linear-to-r from-yellow-200 to-yellow-500  flex items-center justify-center  font-bold text-white mt-0.5">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 16 16" fill="none">
+                <div className=" rounded-lg p-2 flex gap-2 items-start bg-black/6">
+                    <div
+                        className="w-8 h-8 shrink-0 rounded-full border border-[rgba(250,208,82,0.91)]   backdrop-blur-md flex flex-col items-center justify-center mt-0.5"
+                        style={{
+                            background: "linear-gradient(134deg, rgba(253,199,37,0.50) 35.01%, rgba(139,109,18,0.50) 85.14%), #FDC725"
+                        }}
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                             <path d="M7.34447 1.87605C7.37304 1.72312 7.45419 1.58499 7.57387 1.4856C7.69355 1.3862 7.84423 1.33179 7.99981 1.33179C8.15538 1.33179 8.30606 1.3862 8.42574 1.4856C8.54542 1.58499 8.62657 1.72312 8.65514 1.87605L9.35581 5.58138C9.40557 5.84482 9.53359 6.08713 9.72316 6.2767C9.91273 6.46627 10.155 6.59429 10.4185 6.64405L14.1238 7.34472C14.2767 7.37328 14.4149 7.45443 14.5143 7.57412C14.6137 7.6938 14.6681 7.84447 14.6681 8.00005C14.6681 8.15563 14.6137 8.3063 14.5143 8.42599C14.4149 8.54567 14.2767 8.62682 14.1238 8.65538L10.4185 9.35605C10.155 9.40581 9.91273 9.53383 9.72316 9.7234C9.53359 9.91297 9.40557 10.1553 9.35581 10.4187L8.65514 14.1241C8.62657 14.277 8.54542 14.4151 8.42574 14.5145C8.30606 14.6139 8.15538 14.6683 7.99981 14.6683C7.84423 14.6683 7.69355 14.6139 7.57387 14.5145C7.45419 14.4151 7.37304 14.277 7.34447 14.1241L6.64381 10.4187C6.59404 10.1553 6.46602 9.91297 6.27645 9.7234C6.08688 9.53383 5.84457 9.40581 5.58114 9.35605L1.87581 8.65538C1.72287 8.62682 1.58475 8.54567 1.48535 8.42599C1.38595 8.3063 1.33154 8.15563 1.33154 8.00005C1.33154 7.84447 1.38595 7.6938 1.48535 7.57412C1.58475 7.45443 1.72287 7.37328 1.87581 7.34472L5.58114 6.64405C5.84457 6.59429 6.08688 6.46627 6.27645 6.2767C6.46602 6.08713 6.59404 5.84482 6.64381 5.58138L7.34447 1.87605Z" stroke="white" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round" />
                             <path d="M13.3335 1.33337V4.00004" stroke="white" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round" />
                             <path d="M14.6667 2.66663H12" stroke="white" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round" />
@@ -126,12 +139,12 @@ export default function TripCard({
                     </div>
                     <div>
                         <p className="text-[10px] font-semibold text-black mb-0.5">AI Explanation</p>
-                        <p className="text-[11px] text-gray-500 leading-relaxed">{aiNote}</p>
+                        <p className="text-[14px] leading-5.5 text-gray-500 ">{aiNote}</p>
                     </div>
                 </div>
 
                 {/* Actions */}
-                <div className=" w-full  flex gap-2 md:gap-3      ">
+                <div className=" w-full mt-5  flex gap-2 md:gap-3      ">
                     <Link
                         href={`/trips/${id}`}
                         className="flex-1 text-center text-sm font-medium border-l-2 border-r-2 border-black/10  rounded-full py-1.5 bg-black/6 hover:bg-gray-50 transition-colors"
