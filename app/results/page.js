@@ -78,7 +78,7 @@ export default function ResultsPage() {
                 </p>
 
                 {/* Filter chips */}
-                <div className="flex flex-wrap gap-1 mb-8 p-5 rounded-2xl border border-[#D5E0E2] bg-[#FFF]">
+                <div className="flex flex-wrap gap-2 mb-8 p-5 rounded-2xl border border-[#D5E0E2] bg-[#FFF]">
                     {/* Refine button */}
                     <div
                         className="flex items-center w-full lg:w-auto cursor-pointer"
@@ -101,7 +101,7 @@ export default function ResultsPage() {
                                 </clipPath>
                             </defs>
                         </svg>
-                        <button className={`text-sm px-1 ${!selectedFilter ? "font-semibold" : ""}`}>
+                        <button className={`text-sm font-medium text-[#00242F] px-1 ${!selectedFilter ? "font-semibold" : ""}`}>
                             Refine — always returns 3
                         </button>
                     </div>

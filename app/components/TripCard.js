@@ -87,7 +87,7 @@ export default function TripCard({
                         <p className="text-xs text-gray-400 ">{country}</p>
                     </div>
                     <div className="text-right">
-                        <div className="flex  items-center gap-2 text-[8px] text-black/40 bg-yellow-100 rounded-full px-2 py-0.2">
+                        <div className="flex  items-center gap-2 text-[8px] text-black/40 bg-[#FDC725]/20 rounded-full px-2 py-0.2">
                             <span>Price generated</span>
                             <span className="font-semibold text-gray-600">0s ago</span>
                             <span>22:46</span>

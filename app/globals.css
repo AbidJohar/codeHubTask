@@ -71,7 +71,7 @@ body {
 }
 
 .trip-card:hover .ai-explanation {
-  background: radial-gradient(ellipse at center, rgba(50, 85, 130, 0.70) 0%, rgba(20, 45, 80, 0.90) 100%);
+  background: radial-gradient(ellipse at center, rgba(105, 129, 161, 0.7) 0%, rgba(20, 45, 80, 0.90) 100%);
 }
 
 .trip-card:hover .ai-explanation p {

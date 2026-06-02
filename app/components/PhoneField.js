@@ -27,7 +27,7 @@ export default function PhoneField({ disabled }) {
     }, []);
 
     return (
-        <div className="flex gap-2">
+        <div className="flex gap-2.5">
 
             {/* Country selector */}
             <div className="relative" ref={ref}>
@@ -35,7 +35,7 @@ export default function PhoneField({ disabled }) {
                     type="button"
                     disabled={disabled}
                     onClick={() => setOpen(!open)}
-                    className="flex items-center gap-1.5 px-3 py-2.5 rounded-xl border border-black/10 bg-white text-sm text-navy hover:bg-gray-50 transition-colors disabled:opacity-40 disabled:cursor-not-allowed whitespace-nowrap"
+                    className="flex items-center gap-1.5 px-3 py-2.25 rounded-xl border border-black/10   text-sm text-navy hover:bg-gray-50 transition-colors disabled:opacity-40 disabled:cursor-not-allowed whitespace-nowrap"
                 >
                     {/* Flag using twemoji CDN */}
                     <img
@@ -98,7 +98,7 @@ export default function PhoneField({ disabled }) {
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="300 900123"
                 disabled={disabled}
-                className="flex-1 px-3.5 py-2.5 rounded-xl border border-black/10 bg-white text-sm text-navy placeholder:text-gray-300 focus:outline-none focus:border-navy transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                className="flex-1 w-12 px-3 py-[8.5px] rounded-xl border border-black/10 bg-white text-sm  placeholder:text-gray-300 focus:outline-none  transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
             />
         </div>
     );
