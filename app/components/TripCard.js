@@ -36,10 +36,10 @@ export default function TripCard({
 }) {
     return (
         <article
-            className={`bg-white  rounded-3xl md:flex-row lg:flex-col overflow-hidden flex flex-col transition-all duration-200 hover:-translate-y-1 hover:border hover:border-[#233957]  hover:shadow-lg  border border-black/15 `}
+            className={`trip-card bg-white  rounded-3xl md:flex-row lg:flex-col overflow-hidden flex flex-col transition-all duration-200 hover:-translate-y-1 hover:border hover:border-[#233957]  hover:shadow-lg  border border-black/15 `}
         >
             {/* Image */}
-            <div className="relative aspect-4/3 md:aspect-4/3  md:shrink-0 lg:w-full lg:aspect-4/3  overflow-hidden">
+            <div className="relative self-stretch h-61.25 md:w-84 md:h-auto   md:shrink-0 lg:w-full lg:aspect-4/3  overflow-hidden">
                 {image ? (
                     <Image src={image} alt={`${city}, ${country}`} fill className="object-cover" />
                 ) : (
@@ -62,7 +62,7 @@ export default function TripCard({
                 )}
 
                 {/* Verified badge top-right */}
-                <span className="absolute top-2.5 right-2.5 text-[11px] font-medium px-2 py-1 rounded-full bg-green-600 text-white flex items-center gap-1">
+                <span className="absolute top-2.5 right-2.5 text-[11px] font-medium px-2.5 py-1 rounded-full bg-green-600 text-white flex items-center gap-1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
                         <g clipPath="url(#clip0_375_2453)">
                             <path d="M10 6.49998C10 8.99998 8.25 10.25 6.17 10.975C6.06108 11.0119 5.94277 11.0101 5.835 10.97C3.75 10.25 2 8.99998 2 6.49998V2.99998C2 2.86737 2.05268 2.7402 2.14645 2.64643C2.24021 2.55266 2.36739 2.49998 2.5 2.49998C3.5 2.49998 4.75 1.89998 5.62 1.13998C5.72593 1.04948 5.86068 0.999756 6 0.999756C6.13932 0.999756 6.27407 1.04948 6.38 1.13998C7.255 1.90498 8.5 2.49998 9.5 2.49998C9.63261 2.49998 9.75979 2.55266 9.85355 2.64643C9.94732 2.7402 10 2.86737 10 2.99998V6.49998Z" stroke="#F6F9FB" strokeLinecap="round" strokeLinejoin="round" />
@@ -98,15 +98,15 @@ export default function TripCard({
                 </div>
 
                 {/* Airline + Duration */}
-                <div className="w-full flex items-center  py-5  gap-2 text-[14px] text-gray-500">
-                    <div className="w-1/2 flex justify-start gap-1.5">
+                <div className="w-full flex items-center   py-5  gap-3 text-[14px] text-[#57666B]">
+                    <div className="w-1/2 flex items-center justify-start gap-1.5">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
                             <path d="M10.3833 11.2L9.33333 6.41667L11.375 4.375C12.25 3.5 12.5417 2.33333 12.25 1.75C11.6667 1.45833 10.5 1.75 9.625 2.625L7.58333 4.66667L2.8 3.61667C2.50833 3.55833 2.275 3.675 2.15833 3.90833L1.98333 4.2C1.86667 4.49167 1.925 4.78333 2.15833 4.95833L5.25 7L4.08333 8.75H2.33333L1.75 9.33333L3.5 10.5L4.66667 12.25L5.25 11.6667V9.91667L7 8.75L9.04167 11.8417C9.21667 12.075 9.50833 12.1333 9.8 12.0167L10.0917 11.9C10.325 11.725 10.4417 11.4917 10.3833 11.2Z" stroke="#F6C330" strokeWidth="1.16667" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                         {airline}
                     </div>
 
-                    <div className="w-1/2 flex gap-1.5">
+                    <div className="w-1/2 flex gap-1.5 items-center justify-start">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
                             <g clip-path="url(#clip0_375_2481)">
                                 <path d="M6.99984 12.8333C10.2215 12.8333 12.8332 10.2216 12.8332 6.99996C12.8332 3.7783 10.2215 1.16663 6.99984 1.16663C3.77818 1.16663 1.1665 3.7783 1.1665 6.99996C1.1665 10.2216 3.77818 12.8333 6.99984 12.8333Z" stroke="#F6C330" strokeWidth="1.16667" strokeLinecap="round" strokeLinejoin="round" />
@@ -123,7 +123,7 @@ export default function TripCard({
                 </div>
 
                 {/* AI Explanation */}
-                <div className=" rounded-lg p-2 flex gap-2 items-start bg-black/6">
+                <div className={`ai-explanation rounded-lg p-2 flex gap-2 items-start transition-all duration-1000 `}>
                     <div
                         className="w-8 h-8 shrink-0 rounded-full border border-[rgba(250,208,82,0.91)]   backdrop-blur-md flex flex-col items-center justify-center mt-0.5"
                         style={{
@@ -147,23 +147,23 @@ export default function TripCard({
                 <div className=" w-full mt-5  flex gap-2 md:gap-3      ">
                     <Link
                         href={`/trips/${id}`}
-                        className="flex-1 text-center text-sm font-medium border-l-2 border-r-2 border-black/10  rounded-full py-1.5 bg-black/6 hover:bg-gray-50 transition-colors"
+                        className="flex-1 text-center text-sm text-[#00242F] font-medium   border-l-2 border-r-2 border-[#666666]/20  rounded-full py-1.5 bg-[#EDF1F1] hover:bg-gray-50 transition-colors"
                     >
                         View details
                     </Link>
                     <Link
                         href={`/trips/${id}/select`}
-                        className="flex-1 text-center text-sm font-medium text-white rounded-full py-1.5 
+                        className="flex-1 text-center text-sm font-medium text-[#F8FDFD] rounded-full py-1.5 
     border border-[#8B6D12]
     shadow-[0_18px_17px_0_rgba(0,0,0,0.10)]
     backdrop-blur-md
-    transition-all flex items-center justify-center gap-1.5"
+    transition-all flex items-center justify-center gap-2"
                         style={{
                             background: "linear-gradient(134deg, rgba(64,118,189,0.50) 35.01%, rgba(30,58,95,0.50) 85.14%), #1E3A5F",
                         }}
                     >
                         Select
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <svg  width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                             <path d="M5 12h14M12 5l7 7-7 7" />
                         </svg>
                     </Link>

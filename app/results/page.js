@@ -7,6 +7,7 @@ import TripCard from "@/app/components/TripCard";
 const filters = [
     { label: "Make it cheaper" },
     { label: "Better flight times" },
+    { label: "More comfort" },
     { label: "Fewer stops" },
     { label: "Change Vibe" },
     { label: "Shorten Travel" },
@@ -51,6 +52,7 @@ const allTrips = [
 
 export default function ResultsPage() {
     const [selectedFilter, setSelectedFilter] = useState(null);
+    const [error, setError] = useState(false);
 
     // If a filter is selected → show only 1 matching card (simulate no result for others)
     const trips = selectedFilter === "Fewer stops"
@@ -61,22 +63,22 @@ export default function ResultsPage() {
     // const showNoResult = selectedFilter && trips.length === 0;
 
     return (
-        <div className="min-h-screen flex flex-col bg-black/6">
+        <div className="min-h-screen flex flex-col bg-[#F6FBFB]">
             <Header />
 
-            <main className="flex-1 max-w-5xl mx-auto w-full px-6  py-14 gap-x-8">
+            <main className="flex-1 max-w-360 mx-auto w-full px-6  py-14 gap-x-8">
                 <p className="text-xs font-semibold text-[#F6C330] tracking-widest uppercase mb-2">
                     Your shortlist
                 </p>
-                <h1 className="font-fraunces font-normal text-4xl leading-tight mb-1">
+                <h1 className="font-fraunces font-normal text-[#00242F] text-5xl leading-tight mb-1">
                     Your 3 best trips
                 </h1>
-                <p className="text-[16px] text-gray-500 mb-8">
+                <p className="text-[16px] text-[#57666B] mb-8">
                     Tailored to the preferences you shared.
                 </p>
 
                 {/* Filter chips */}
-                <div className="flex flex-wrap gap-1 mb-8 p-5 rounded-2xl border border-[#D5E0E2] bg-white">
+                <div className="flex flex-wrap gap-1 mb-8 p-5 rounded-2xl border border-[#D5E0E2] bg-[#FFF]">
                     {/* Refine button */}
                     <div
                         className="flex items-center w-full lg:w-auto cursor-pointer"
@@ -109,10 +111,10 @@ export default function ResultsPage() {
                         <button
                             key={f.label}
                             onClick={() => setSelectedFilter(f.label === selectedFilter ? null : f.label)}
-                            className={`text-sm px-3.5 py-1.5 rounded-full border transition-colors whitespace-nowrap
+                            className={`text-sm px-3.5 py-1.5 font-normal font-inter rounded-full border transition-colors whitespace-nowrap
                                 ${selectedFilter === f.label
-                                    ? " text-black border-black/50"
-                                    : "bg-black/6 border-[#D5E0E2] hover:border-navy hover:bg-gray-50"
+                                    ? " text-[#00242F] border-black/50"
+                                    : "bg-[#F6FBFB] border-[#D5E0E2] hover:border-navy hover:bg-gray-50"
                                 }`}
                         >
                             {f.label}
@@ -121,28 +123,23 @@ export default function ResultsPage() {
                 </div>
 
                 {/* Soft Fallback Banner */}
-                <div className="flex items-center justify-between gap-3 mb-8 px-4 py-3 rounded-2xl border border-amber-200 bg-[#F4F0E1]">
-                    <div className="flex items-start gap-2.5">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                            <g clip-path="url(#clip0_375_2052)">
-                                <path d="M8.00016 14.6668C11.6821 14.6668 14.6668 11.6821 14.6668 8.00016C14.6668 4.31826 11.6821 1.3335 8.00016 1.3335C4.31826 1.3335 1.3335 4.31826 1.3335 8.00016C1.3335 11.6821 4.31826 14.6668 8.00016 14.6668Z" stroke="#F6C330" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                                <path d="M8 10.6667V8" stroke="#F6C330" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                                <path d="M8 5.3335H8.00667" stroke="#F6C330" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                            </g>
-                            <defs>
-                                <clipPath id="clip0_375_2052">
-                                    <rect width="16" height="16" fill="white" />
-                                </clipPath>
-                            </defs>
-                        </svg>
+                <div className="flex sm:flex-row items-center justify-between gap-3 mb-8 p-5 rounded-2xl border border-[#F0CB87] bg-[#F4F0E1]">
+                    <div className="flex items-start flex-col gap-2 ">
+                        <div className="text-[#f1b42f] shrink-0 flex gap-2 ">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <line x1="12" y1="16" x2="12" y2="12" />
+                                <line x1="12" y1="8" x2="12.01" y2="8" />
+                            </svg>
+                            <p className="w-full text-start text-sm  font-bold text-[#00242F]">Closest matches we found</p>
+                        </div>
                         <div>
-                            <p className="text-sm font-semibold text-black">Closest matches we found</p>
-                            <p className="text-xs text-black/80 mt-0.5">
+                            <p className="text-sm leading-[22.75px] text-[rgba(0, 36, 47, 0.85)] mt-0.5">
                                 We couldn't get an exact match for every preference, so here are the best alternatives.
                             </p>
                         </div>
                     </div>
-                    <button className="text-sm text-nowrap font-medium px-5 py-2 rounded-full bg-gray-100 backdrop-blur-lg border-l-2 border-r-2 border-black/10 shadow-[0_2px_6px_rgba(0,0,0,0.06),inset_0_1px_3px_rgba(255,255,255,0.9),inset_0_-1px_2px_rgba(0,0,0,0.06)] transition-all">
+                    <button className="text-sm text-nowrap text-[#00242F] font-medium px-5 py-2 rounded-full bg-gray-100 backdrop-blur-lg border-l-2 border-r-2 border-black/10 shadow-[0_2px_6px_rgba(0,0,0,0.06),inset_0_1px_3px_rgba(255,255,255,0.9),inset_0_-1px_2px_rgba(0,0,0,0.06)] transition-all">
                         Try Again
                     </button>
                 </div>
@@ -150,14 +147,14 @@ export default function ResultsPage() {
                 {/* Cards or Empty State */}
                 {trips.length > 0 ? (
                     <>
-                        <div className="grid grid-cols-1  lg:grid-cols-3 gap-6 mb-8">
+                        <div className="grid grid-cols-1  lg:grid-cols-3 gap-6 pb-6">
                             {trips.map((trip) => (
                                 <TripCard key={trip.id} {...trip} />
                             ))}
                         </div>
 
 
-                        <div className="border border-dashed border-black/10 rounded-2xl p-8 text-center">
+                        <div className="border border-dashed border-black/10 rounded-2xl mt-8 p-8 text-center">
                             <h2 className="font-fraunces text-xl font-medium text-[20px] mb-4">
                                 Is this what you were looking for?
                             </h2>
@@ -165,7 +162,7 @@ export default function ResultsPage() {
                                 {["Yes", "Almost", "Not Really"].map((label) => (
                                     <button
                                         key={label}
-                                        className="text-sm font-medium border border-black/10 rounded-full px-4 py-2 hover:bg-gray-50 transition-colors"
+                                        className="text-sm text-[#00242F] font-medium border border-black/10 rounded-full px-4 py-2 hover:bg-gray-50 transition-colors"
                                     >
                                         {label}
                                     </button>
@@ -174,7 +171,7 @@ export default function ResultsPage() {
                         </div>
                     </>
                 ) : (
-                    <div className="flex flex-col items-center justify-center text-center px-6 py-8 rounded-2xl border border-dashed border-black/10 mb-8">
+                    <div className="flex flex-col items-center justify-center text-center px-6     py-8 rounded-2xl border border-dashed border-black/10 mb-8">
                         <div className="mb-4 ">
                             <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" fill="none">
                                 <path d="M24.7502 15.5835L15.5835 24.7502" stroke="#F6C330" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -183,28 +180,60 @@ export default function ResultsPage() {
                                 <path d="M38.5 38.5L30.6167 30.6167" stroke="#F6C330" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                         </div>
-                        <h3 className="text-xl font-semibold  mb-2">
+
+                        <h3 className="text-xl font-fraunces font-semibold #00242F  mb-2">
                             No trips matched.
                         </h3>
-                        <p className="text-sm text-gray-500 max-w-xs leading-relaxed mb-6">
-                            Try widening your dates by a few days, lifting the budget cap, or removing the direct-only flight filter.
+                        <p className="text-center text-[15px] font-normal leading-relaxed tracking-wide text-slate-600 max-w-md mx-auto mb-4">
+                            Try widening your dates by a few days, lifting the budget <br className="hidden sm:inline" />
+                            cap, or removing the direct-only flight filter.
                         </p>
-                        <div className="w-full flex flex-col sm:flex-row items-center gap-2  justify-center px-10 ">
-                            <button className="text-sm w-full sm:w-auto text-nowrap font-medium px-5 py-2 rounded-full bg-gray-100 backdrop-blur-lg border-l-2  border-r-2 border-black/10 shadow-[0_2px_6px_rgba(0,0,0,0.06),inset_0_1px_3px_rgba(255,255,255,0.9),inset_0_-1px_2px_rgba(0,0,0,0.06)] transition-all">
+
+                        <div className="w-full  flex flex-col sm:flex-row items-center gap-2  justify-center px-0 sm:px-10 ">
+                            <button className="text-sm w-full sm:w-auto  font-medium px-5 py-2 rounded-full bg-gray-100 backdrop-blur-lg border-l-2  border-r-2 border-black/10 shadow-[0_2px_6px_rgba(0,0,0,0.06),inset_0_1px_3px_rgba(255,255,255,0.9),inset_0_-1px_2px_rgba(0,0,0,0.06)] transition-all">
                                 Adjust Dates
                             </button>
-                            <button className="text-sm w-full sm:w-auto  text-nowrap font-medium px-5 py-2 rounded-full bg-gray-100 backdrop-blur-lg border-l-2 border-r-2 border-black/10 shadow-[0_2px_6px_rgba(0,0,0,0.06),inset_0_1px_3px_rgba(255,255,255,0.9),inset_0_-1px_2px_rgba(0,0,0,0.06)] transition-all">
+                            <button className="text-sm w-full sm:w-auto   font-medium px-5 py-2 rounded-full bg-gray-100 backdrop-blur-lg border-l-2 border-r-2 border-black/10 shadow-[0_2px_6px_rgba(0,0,0,0.06),inset_0_1px_3px_rgba(255,255,255,0.9),inset_0_-1px_2px_rgba(0,0,0,0.06)] transition-all">
                                 Adjust Budget
                             </button>
                             <button
-                                className="text-sm  w-full sm:w-auto  font-medium px-5 py-2 rounded-full text-white border border-[#8B6D12] transition-all"
+                                className="text-sm  w-full sm:w-auto text-nowrap  font-medium px-5 py-2 rounded-full text-white border border-[#8B6D12] transition-all"
                                 style={{ background: "linear-gradient(134deg, rgba(64,118,189,0.50) 35.01%, rgba(30,58,95,0.50) 85.14%), #1E3A5F" }}
                             >
                                 Run Again
                             </button>
                         </div>
                     </div>
+
                 )}
+
+                {error && <div className="flex flex-col items-center justify-center text-center px-6     py-8 rounded-2xl border border-dashed border-black/10 my-8">
+                    <div className="mb-4 ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" fill="none">
+                            <path d="M39.8384 33.0001L25.1718 7.33342C24.852 6.76913 24.3882 6.29976 23.8278 5.97321C23.2674 5.64666 22.6304 5.47461 21.9818 5.47461C21.3332 5.47461 20.6962 5.64666 20.1358 5.97321C19.5753 6.29976 19.1116 6.76913 18.7918 7.33342L4.12512 33.0001C3.80187 33.5599 3.63237 34.1952 3.6338 34.8417C3.63523 35.4881 3.80754 36.1227 4.13327 36.6811C4.45899 37.2395 4.92655 37.7018 5.48856 38.0213C6.05056 38.3407 6.68703 38.5059 7.33345 38.5001H36.6668C37.3101 38.4994 37.9419 38.3295 38.4988 38.0074C39.0557 37.6854 39.518 37.2224 39.8394 36.6651C40.1608 36.1078 40.3299 35.4758 40.3297 34.8325C40.3295 34.1892 40.1601 33.5572 39.8384 33.0001Z" stroke="#F6C330" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M22 16.5V23.8333" stroke="#F6C330" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M22 31.167H22.0183" stroke="#F6C330" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+
+                    <h3 className="text-xl font-fraunces font-semibold #00242F  mb-2">
+                        Something interrupted the search.
+                    </h3>
+                    <p className="text-center text-[15px] font-normal leading-relaxed tracking-wide text-slate-600 max-w-md mx-auto mb-4">
+                        Something interrupted the search.
+                    </p>
+
+                    <div className="w-full  flex flex-col sm:flex-row items-center gap-2  justify-center px-0 sm:px-10 ">
+                        
+                        <button
+                            className="text-sm  w-full sm:w-auto text-nowrap  font-medium px-5 py-2 rounded-full text-white border border-[#8B6D12] transition-all"
+                            style={{ background: "linear-gradient(134deg, rgba(64,118,189,0.50) 35.01%, rgba(30,58,95,0.50) 85.14%), #1E3A5F" }}
+                        >
+                            Retry Now
+                        </button>
+                    </div>
+                </div>
+                }
 
 
             </main>

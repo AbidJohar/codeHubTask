@@ -64,3 +64,16 @@ body {
     width: 20px;
     height: 20px;
 }
+
+.ai-explanation {
+  background: rgba(0, 0, 0, 0.06);
+  transition: background 0.2s ease;
+}
+
+.trip-card:hover .ai-explanation {
+  background: radial-gradient(ellipse at center, rgba(50, 85, 130, 0.70) 0%, rgba(20, 45, 80, 0.90) 100%);
+}
+
+.trip-card:hover .ai-explanation p {
+  color: white;
+}
