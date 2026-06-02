@@ -12,6 +12,9 @@ export default function Home() {
           <Link href="/trips/checkout" className="text-sm underline underline-offset-1 text-blue-600 hover:underline">
             Checkout Page
           </Link>
+          <Link href="/revalidation-screens" className="text-sm underline underline-offset-1 text-blue-600 hover:underline">
+            revalidation-screens
+          </Link>
         </div>
       </main>
     </div>
