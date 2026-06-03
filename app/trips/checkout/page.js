@@ -40,7 +40,7 @@ export default function CheckoutPage() {
                 </header>
             </div>
 
-            <main className="flex-1 w-full bg-[#F6FBFB] max-w-360 mx-auto  px-6 py-10 ">
+            <main className="flex-1  w-full bg-[#F6FBFB] max-w-360 mx-auto  px-6 py-10 ">
 
                 <div className="w-full flex flex-col md:flex-row items-start  gap-5 ">
 

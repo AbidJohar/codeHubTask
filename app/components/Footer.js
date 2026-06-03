@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-        <footer className="bg-[#FFF] border-t border-black/5 px-6 py-4 text-sm text-gray-500">
+        <footer className="bg-[#FFF] border-t w-full  border-black/5 px-17.75 py-4 text-sm text-gray-500">
 
             {/* Mobile layout — hidden on lg */}
             <div className="lg:hidden">
