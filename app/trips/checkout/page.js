@@ -45,7 +45,7 @@ export default function CheckoutPage() {
                 <div className="w-full flex flex-col md:flex-row items-start  gap-5 ">
 
                     {/* 1. Turn the parent container into a flex column with a minimum height or relative positioning if needed */}
-                    <div className="md:w-[50%] order-2 md:order-1 mb-6 md:mb-0 flex flex-col justify-between md:min-h-100 ">
+                    <div className="md:w-[60%] order-2 md:order-1 mb-6 md:mb-0 flex flex-col justify-between md:min-h-100 ">
 
                         {/* Heading Section */}
                         {/* REMOVED: md:mb-48, mb-0, lg:mb-0 */}
@@ -120,7 +120,7 @@ export default function CheckoutPage() {
                                     </div>
 
                                     {/* Save your trip box */}
-                                    <div className="w-full hidden px-4 py-4 rounded-2xl border border-black/10 bg-white lg:flex flex-col">
+                                    <div className="w-full hidden px-4 py-4  rounded-2xl border border-black/10 bg-white lg:flex flex-col">
                                         <div className="flex items-center gap-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="shrink-0 text-amber-500">
                                                 <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
@@ -163,7 +163,7 @@ export default function CheckoutPage() {
                         </div>
                     </div>
                     {/* Side Trip cost card */}
-                    <div className="md:w-[50%] w-full  flex flex-col gap-4 order-1 lg:order-2">
+                    <div className="md:w-[40%] w-full  flex flex-col  gap-4 order-1 lg:order-2">
                         <div className="bg-[#FFF] rounded-2xl border border-black/10 overflow-hidden">
                             <div className="relative h-48 w-full">
                                 <Image src="/images/card-image.jpg" alt="Lisbon, Portugal" fill className="object-cover" />
@@ -188,13 +188,13 @@ export default function CheckoutPage() {
 
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] md:grid-cols-1   ">
+                <div className="grid grid-cols-1 lg:grid-cols-[1.425fr_1fr] md:grid-cols-1  ">
 
                     {/* Left Side */}
                     <div className="md:mt-6">
 
                         {/* Save your trip box */}
-                        <div className=" lg:hidden  w-full px-4 py-4 rounded-2xl border border-black/10 bg-white flex flex-col  ">
+                        <div className=" lg:hidden  w-full md:mb-6 px-4 py-4 rounded-2xl border border-black/10 bg-white flex flex-col  ">
                             <div className="flex items-center gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="shrink-0 text-amber-500">
                                     <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
@@ -231,22 +231,22 @@ export default function CheckoutPage() {
                             <h2 className="font-fraunces text-xl font-normal leading-7 text-[#00242F] mb-5">Lead traveler</h2>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
-                                    <label className="text-sm font-medium text-black tracking-widest font-inter uppercase block mb-1.5 ">First Name</label>
+                                    <label className="text-xs font-medium text-black tracking-widest font-inter uppercase block mb-1.5 ">First Name</label>
                                     <input type="text" placeholder="Sarah" disabled={formDisabled}
                                         className="w-full px-3.5 py-2.5 rounded-xl border border-black/10 bg-white text-sm text-navy placeholder:text-gray-300 focus:outline-none focus:border-navy transition-colors disabled:cursor-not-allowed" />
                                 </div>
                                 <div>
-                                    <label className="text-sm font-medium text-black tracking-widest uppercase block mb-1.5 ">Last Name</label>
+                                    <label className="text-xs font-medium text-black tracking-widest uppercase block mb-1.5 ">Last Name</label>
                                     <input type="text" placeholder="Klein" disabled={formDisabled}
                                         className="w-full px-3.5 py-2.5 rounded-xl border border-black/10 bg-white text-sm text-navy placeholder:text-gray-300 focus:outline-none focus:border-navy transition-colors disabled:cursor-not-allowed" />
                                 </div>
                                 <div>
-                                    <label className="text-sm font-medium text-black tracking-widest uppercase block mb-1.5 ">Email</label>
+                                    <label className="text-xs font-medium text-black tracking-widest uppercase block mb-1.5 ">Email</label>
                                     <input type="email" placeholder="sarah@example.com" disabled={formDisabled}
                                         className="w-full px-3.5 py-2.5 rounded-xl border border-black/10 bg-white text-sm text-navy placeholder:text-gray-300 focus:outline-none focus:border-navy transition-colors disabled:cursor-not-allowed" />
                                 </div>
                                 <div>
-                                    <label className="text-sm font-medium text-black tracking-widest uppercase block mb-1.5 ">
+                                    <label className="text-xs font-medium text-black tracking-widest uppercase block mb-1.5 ">
                                         Phone
                                     </label>
                                     <PhoneField disabled={formDisabled} />
@@ -259,7 +259,7 @@ export default function CheckoutPage() {
                             <h2 className="font-fraunces text-lg font-normal text-black mb-5">Payment</h2>
                             <div className="flex flex-col gap-4">
                                 <div>
-                                    <label className="text-sm font-medium text-black tracking-widest uppercase block mb-1.5">Card Number</label>
+                                    <label className="text-xs font-medium text-black tracking-widest uppercase block mb-1.5">Card Number</label>
                                     <div className="relative">
                                         <input type="text" placeholder="1234 5678 9012 3456" disabled={formDisabled}
                                             className="w-full px-3.5 py-2.5 rounded-xl border border-black/10 bg-white text-sm text-navy placeholder:text-gray-300 focus:outline-none focus:border-navy transition-colors pr-10 disabled:cursor-not-allowed" />
@@ -271,12 +271,12 @@ export default function CheckoutPage() {
                                 </div>
                                 <div className="grid grid-cols-2 gap-4">
                                     <div>
-                                        <label className="text-sm font-medium text-black tracking-widest uppercase block mb-1.5">Expiry</label>
+                                        <label className="text-xs font-medium text-black tracking-widest uppercase block mb-1.5">Expiry</label>
                                         <input type="text" placeholder="MM / YY" disabled={formDisabled}
                                             className="w-full px-3.5 py-2.5 rounded-xl border border-black/10 bg-white text-sm text-navy placeholder:text-gray-300 focus:outline-none focus:border-navy transition-colors disabled:cursor-not-allowed" />
                                     </div>
                                     <div>
-                                        <label className="text-sm font-medium text-black tracking-widest uppercase block mb-1.5">CVC</label>
+                                        <label className="text-xs font-medium text-black tracking-widest uppercase block mb-1.5">CVC</label>
                                         <input type="text" placeholder="123" disabled={formDisabled}
                                             className="w-full px-3.5 py-2.5 rounded-xl border border-black/10 bg-white text-sm text-navy placeholder:text-gray-300 focus:outline-none focus:border-navy transition-colors disabled:cursor-not-allowed" />
                                     </div>
